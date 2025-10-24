@@ -15,7 +15,6 @@ This plugin allows you to visualize New Relic data directly in Grafana dashboard
 * Multi-aggregation query support
 * Percentile calculations with object handling
 * Filter function support for error rate calculations
-* Template variable integration
 * Secure API key storage using Grafana's secure storage
 * Multi-region support (US and EU New Relic regions)
 * Time series data visualization with accurate time field handling
@@ -179,18 +178,6 @@ SELECT average(duration) FROM Transaction TIMESERIES 5 minutes SINCE 1 day ago
 
 -- Percentile analysis over time
 SELECT percentile(duration, 95) FROM Transaction TIMESERIES 1 hour SINCE 1 day ago
-```
-
-### [Template Variables](https://grafana.com/docs/grafana/latest/dashboards/variables/)
-
-The plugin supports Grafana template variables in NRQL queries:
-
-```sql
--- Using dashboard variables
-SELECT count(*) FROM Transaction WHERE appName = '$app' SINCE $__from UNTIL $__to
-
--- Using facet variables
-SELECT average(duration) FROM Transaction WHERE region = '$region' TIMESERIES
 ```
 
 ### [Filter Functions](https://docs.newrelic.com/docs/query-your-data/nrql-new-relic-query-language/get-started/nrql-syntax-clauses-functions/#func-filter)
